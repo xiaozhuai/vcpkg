@@ -1,0 +1,22 @@
+diff --git a/src/plugins/platforms/windows/qwindowseglcontext.cpp b/src/plugins/platforms/windows/qwindowseglcontext.cpp
+index 4ae087dfa..6f746d919 100644
+--- a/src/plugins/platforms/windows/qwindowseglcontext.cpp
++++ b/src/plugins/platforms/windows/qwindowseglcontext.cpp
+@@ -117,7 +117,7 @@ bool QWindowsLibEGL::init()
+ {
+     const char dllName[] = QT_STRINGIFY(LIBEGL_NAME)
+ #if defined(QT_DEBUG)
+-    "d"
++    ""
+ #endif
+     "";
+ 
+@@ -174,7 +174,7 @@ bool QWindowsLibGLESv2::init()
+ 
+     const char dllName[] = QT_STRINGIFY(LIBGLESV2_NAME)
+ #if defined(QT_DEBUG)
+-    "d"
++    ""
+ #endif
+     "";
+ 
