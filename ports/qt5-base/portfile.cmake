@@ -75,6 +75,7 @@ set(PATCHES
     patches/Qt5PluginTarget.patch
     patches/create_cmake.patch
     patches/Qt5GuiConfigExtras.patch   # Patches the library search behavior for EGL since angle is not build with Qt
+    patches/change_angle_path.patch    # Remove angle dlls 'd' suffix on debug mode
     patches/fix_angle.patch            # Failed to create OpenGL context for format QSurfaceFormat ...
     patches/mingw9.patch               # Fix compile with MinGW-W64 9.0.0: Redefinition of 'struct _FILE_ID_INFO'
     patches/qmake-arm64.patch          # Fix by Oliver Wolff to support ARM64 hosts on Windows
