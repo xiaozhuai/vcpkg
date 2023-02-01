@@ -1,0 +1,50 @@
+triplets:
+  - x64-osx
+
+ports:
+  - proxy
+  - cmakerc
+  - fmt
+  - spdlog
+  - palsigslot
+  - nanobench
+  - readerwriterqueue
+  - concurrentqueue
+  - imageinfo
+  - nameof
+  - uvw
+  - xorstr
+  - xxhash
+  - wyhash
+  - minifb
+  - string-view-lite
+  - ghc-filesystem
+  - stb
+  - glm
+  # - protobuf
+  - nlohmann-json
+  - inja
+  - leveldb
+  - neon2sse
+  - highway
+  - tbb
+  # - luajit
+  # - luabridge
+  - duktape
+  - yoga
+  - libwebp
+  - libimobiledevice
+  - libusb
+  - libyuv
+  - dawn
+  - glesx
+  - glfw3
+  - xiaozhuai-imgui
+  - xiaozhuai-thorvg
+  # - vulkan-headers
+  # - skia
+  # - cairo
+  # - cairomm
+  - ffmpeg
+  - opencv
+  # - qt5
