@@ -1,0 +1,29 @@
+triplets:
+  - wasm32-emscripten
+
+ports:
+  - proxy
+  - cmakerc
+  - cctz
+  - fmt
+  - spdlog
+  - nanobench
+  - atomic-queue
+  - imageinfo
+  - nameof
+  - xorstr
+  - xxhash
+  - wyhash
+  - stb
+  - glm
+  - nlohmann-json
+  - inja
+  - highway
+  - libwebp
+  - duktape
+  # - libyuv
+  - dawn
+  - glesx
+  - glfw3
+  - xiaozhuai-imgui
+  - xiaozhuai-thorvg
