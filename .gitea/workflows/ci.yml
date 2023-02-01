@@ -1,0 +1,56 @@
+name: ci
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.runner }}
+    name: Build for ${{ join(matrix.platforms, ', ') }}
+    strategy:
+      matrix:
+        include:
+          - runner: windows-11
+            platforms:
+              - windows
+          - runner: macos-15
+            platforms: 
+              - macos
+          - runner: macos-15
+            platforms: 
+              - android
+          - runner: macos-15
+            platforms: 
+              - ios
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Windows Buildtrees
+        if: runner.os == 'Windows'
+        run: |
+          do {
+            $id = [guid]::NewGuid().ToString('N').Substring(0, 8)
+            $buildtrees = "C:\gitea-runner\b\$id"
+          } while (Test-Path -LiteralPath $buildtrees)
+          New-Item -ItemType Directory -Path $buildtrees -Force | Out-Null
+          "VCPKG_BUILDTREES_ROOT=$buildtrees" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          Write-Host "Build directory: $buildtrees"
+
+      - name: Build
+        run: |
+          zx vcpkg_install_packages.mjs ${{ join(matrix.platforms, ' ') }} --clean
+
+      - name: Cleanup Windows Buildtrees
+        if: always() && runner.os == 'Windows'
+        run: |
+          if ($env:VCPKG_BUILDTREES_ROOT -and (Test-Path -LiteralPath $env:VCPKG_BUILDTREES_ROOT)) {
+            Remove-Item -LiteralPath $env:VCPKG_BUILDTREES_ROOT -Recurse -Force
+            Write-Host "Removed $env:VCPKG_BUILDTREES_ROOT"
+          }
