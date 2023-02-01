@@ -1,0 +1,30 @@
+env:
+  ANDROID_NDK_HOME: /opt/android/sdk/ndk/18.1.5063045
+
+triplets:
+  - arm64-android
+  # - arm-neon-android
+  # - x64-android
+
+ports:
+  - proxy
+  - cmakerc
+  - fmt
+  - spdlog
+  - nanobench
+  - imageinfo
+  - nameof
+  - xorstr
+  - xxhash
+  - wyhash
+  - ghc-filesystem
+  - stb
+  - glm
+  - nlohmann-json
+  - inja
+  - neon2sse
+  - highway
+  - duktape
+  - libyuv
+  - glesx
+  - xiaozhuai-imgui
