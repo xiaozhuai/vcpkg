@@ -1,0 +1,23 @@
+triplets:
+  - arm64-ios
+
+ports:
+  - cmakerc
+  - fmt
+  - spdlog
+  - nanobench
+  - imageinfo
+  - nameof
+  - xorstr
+  - xxhash
+  - wyhash
+  - stb
+  - glm
+  - nlohmann-json
+  - inja
+  - neon2sse
+  - highway
+  - duktape
+  - libyuv
+  - glesx
+  - xiaozhuai-imgui
