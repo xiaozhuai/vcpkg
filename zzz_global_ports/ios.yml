@@ -1,0 +1,29 @@
+triplets:
+  - arm64-ios
+
+ports:
+  - proxy
+  - cmakerc
+  - cctz
+  - fmt
+  - spdlog
+  - nanobench
+  - imageinfo
+  - nameof
+  - uvw
+  - xorstr
+  - xxhash
+  - wyhash
+  - stb
+  - glm
+  - nlohmann-json
+  - inja
+  # - neon2sse
+  - highway
+  - duktape
+  - libyuv
+  - dawn
+  - glesx
+  - xiaozhuai-imgui
+  - xiaozhuai-thorvg
+  - ffmpeg
