@@ -21,16 +21,7 @@
       "supports": "windows & !mingw"
     },
     "platform-default-features": {
-      "description": "Enable platform-dependent default features",
-      "dependencies": [
-        {
-          "name": "qt5-declarative",
-          "features": [
-            "d3d12"
-          ],
-          "platform": "windows & !mingw"
-        }
-      ]
+      "description": "Enable platform-dependent default features"
     }
   }
 }
