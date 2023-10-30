@@ -82,7 +82,6 @@
           "name": "opencv4",
           "default-features": false,
           "features": [
-            "dnn",
             "jpeg",
             "png",
             "quirc",
