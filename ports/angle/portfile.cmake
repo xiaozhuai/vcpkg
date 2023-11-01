@@ -46,6 +46,7 @@ vcpkg_from_github(
         001-fix-uwp.patch
         002-fix-builder-error.patch
         003-fix-mingw.patch
+        004-fix-webswapcgllayer-both-implemented.patch
 )
 
 # Generate angle_commit.h
@@ -159,7 +160,6 @@ checkout_in_path(
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
-    OPTIONS_DEBUG -DDISABLE_INSTALL_HEADERS=1
     OPTIONS
         "-D${ANGLE_CPU_BITNESS}=1"
         "-DPORT=${ANGLE_BUILDSYSTEM_PORT}"
