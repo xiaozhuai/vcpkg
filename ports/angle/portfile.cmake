@@ -49,6 +49,7 @@ vcpkg_from_github(
     # On update check headers against opengl-registry
     PATCHES
         001-fix-builder-error.patch
+        999-fix-webswapcgllayer-both-implemented.patch
 )
 
 # Generate angle_commit.h
@@ -151,7 +152,6 @@ checkout_in_path(
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
-    OPTIONS_DEBUG -DDISABLE_INSTALL_HEADERS=1
     OPTIONS
         "-D${ANGLE_CPU_BITNESS}=1"
         "-DPORT=${ANGLE_BUILDSYSTEM_PORT}"
