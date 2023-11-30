@@ -64,10 +64,6 @@
       "name": "harfbuzz",
       "platform": "!uwp"
     },
-    {
-      "name": "icu",
-      "platform": "!uwp"
-    },
     "jpeg",
     "png",
     "webp"
@@ -163,13 +159,6 @@
         {
           "name": "harfbuzz",
           "default-features": false
-        },
-        {
-          "name": "skia",
-          "default-features": false,
-          "features": [
-            "icu"
-          ]
         }
       ]
     },
