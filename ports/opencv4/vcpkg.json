@@ -88,14 +88,6 @@
             "tiff",
             "webp"
           ]
-        },
-        {
-          "name": "opencv4",
-          "default-features": false,
-          "features": [
-            "gtk"
-          ],
-          "platform": "linux"
         }
       ]
     },
