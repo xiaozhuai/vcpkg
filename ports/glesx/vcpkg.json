@@ -1,0 +1,20 @@
+{
+  "name": "glesx",
+  "version-date": "2026-01-31",
+  "description": "A OpenGL ES 3.0 library. It will automatically load the OpenGL ES 3.0 library on the system.",
+  "license": null,
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    },
+    {
+      "name": "xiaozhuai-angle",
+      "platform": "windows | osx | ios"
+    }
+  ]
+}

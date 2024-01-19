@@ -1,0 +1,4 @@
+glesx provides CMake targets:
+
+  find_package(glesx CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE glesx::EGL glesx::GLESv2)
