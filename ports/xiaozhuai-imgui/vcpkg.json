@@ -1,0 +1,47 @@
+{
+  "name": "xiaozhuai-imgui",
+  "version-date": "2024-07-02",
+  "description": "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.",
+  "homepage": "https://github.com/ocornut/imgui_glfw_es3",
+  "license": "MIT",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ],
+  "default-features": [
+    {
+      "name": "gles3"
+    },
+    {
+      "name": "glfw",
+      "platform": "!android & !ios"
+    },
+    {
+      "name": "android",
+      "platform": "android"
+    }
+  ],
+  "features": {
+    "glfw": {
+      "description": "Enable glfw backend",
+      "dependencies": [
+        "xiaozhuai-glfw3"
+      ]
+    },
+    "gles3": {
+      "description": "Enable gles3 backend",
+      "dependencies": [
+        "glesx"
+      ]
+    },
+    "android": {
+      "description": "Enable android backend"
+    }
+  }
+}
