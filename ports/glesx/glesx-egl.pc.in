@@ -1,0 +1,10 @@
+prefix=${pcfiledir}/../..
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: glesx_egl
+Description: glesx EGL library
+Version: 1.0
+
+Libs: -L${libdir} @GLESX_PKGCONFIG_EGL_LIBS@
