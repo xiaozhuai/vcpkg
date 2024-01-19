@@ -1,0 +1,17 @@
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+if (@IMGUI_BACKEND_GLES3@)
+    find_dependency(glfw3)
+endif()
+
+if (@IMGUI_BACKEND_GLFW@)
+    find_dependency(glesx)
+endif()
+
+if (@IMGUI_BACKEND_WGPU@)
+    find_dependency(Dawn)
+endif()
+
+include(${CMAKE_CURRENT_LIST_DIR}/imgui-targets.cmake)
