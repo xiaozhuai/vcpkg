@@ -1,0 +1,15 @@
+diff --git a/backends/imgui_impl_wgpu.h b/backends/imgui_impl_wgpu.h
+index 1e026be99..1c65d303e 100644
+--- a/backends/imgui_impl_wgpu.h
++++ b/backends/imgui_impl_wgpu.h
+@@ -30,6 +30,10 @@
+ #include "imgui.h"          // IMGUI_IMPL_API
+ #ifndef IMGUI_DISABLE
+ 
++#ifndef IMGUI_IMPL_WEBGPU_BACKEND_DAWN
++#define IMGUI_IMPL_WEBGPU_BACKEND_DAWN
++#endif
++
+ // Setup Emscripten default if not specified.
+ #if defined(__EMSCRIPTEN__) && !defined(IMGUI_IMPL_WEBGPU_BACKEND_DAWN) && !defined(IMGUI_IMPL_WEBGPU_BACKEND_WGPU)
+ #include <emscripten/version.h>
