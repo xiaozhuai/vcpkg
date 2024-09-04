@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9a20941d..d161326c 100644
+index 9a20941d..2ceb54ff 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -4,8 +4,9 @@
@@ -13,7 +13,34 @@ index 9a20941d..d161326c 100644
  option( UNIT_TEST "Built unit tests" OFF )
  
  set ( ly_base_dir	${PROJECT_SOURCE_DIR} )
-@@ -149,6 +150,8 @@ if(WIN32)
+@@ -98,6 +99,18 @@ if(NOT MSVC)
+   endif()
+ 
+   if(arch_lowercase STREQUAL "aarch64" OR arch_lowercase STREQUAL "arm64")
++    # NDK18 does not support -march=armv8-a+dotprod+i8mm
++    if(ANDROID)
++    # Enable Arm Neon kernels.
++    add_definitions(-DLIBYUV_NEON=1)
++    add_library(${ly_lib_name}_neon OBJECT
++      ${ly_src_dir}/compare_neon.cc
++      ${ly_src_dir}/rotate_neon.cc
++      ${ly_src_dir}/row_neon.cc
++      ${ly_src_dir}/scale_neon.cc)
++    target_compile_options(${ly_lib_name}_neon PRIVATE -mfpu=neon)
++    list(APPEND ly_lib_parts $<TARGET_OBJECTS:${ly_lib_name}_neon>)
++    else() # ANDROID
+     # Enable AArch64 Neon dot-product and i8mm kernels.
+     add_library(${ly_lib_name}_neon64 OBJECT
+       ${ly_src_dir}/compare_neon64.cc
+@@ -135,6 +148,7 @@ int main(void) { return 0; }
+     else()
+       add_definitions(-DLIBYUV_DISABLE_SME)
+     endif()
++    endif() # ANDROID
+   endif()
+ endif()
+ 
+@@ -149,6 +163,8 @@ if(WIN32)
    set_target_properties( ${ly_lib_shared} PROPERTIES IMPORT_PREFIX "lib" )
  endif()
  
@@ -22,7 +49,7 @@ index 9a20941d..d161326c 100644
  # this creates the cpuid tool
  add_executable      ( cpuid ${ly_base_dir}/util/cpuid.c )
  target_link_libraries  ( cpuid ${ly_lib_static} )
-@@ -161,10 +164,13 @@ target_link_libraries	( yuvconvert ${ly_lib_static} )
+@@ -161,10 +177,13 @@ target_link_libraries	( yuvconvert ${ly_lib_static} )
  add_executable      ( yuvconstants ${ly_base_dir}/util/yuvconstants.c )
  target_link_libraries  ( yuvconstants ${ly_lib_static} )
  
@@ -37,7 +64,7 @@ index 9a20941d..d161326c 100644
    add_definitions( -DHAVE_JPEG )
  endif()
  
-@@ -211,9 +217,20 @@ endif()
+@@ -211,9 +230,20 @@ endif()
  
  
  # install the conversion tool, .so, .a, and all the header files
