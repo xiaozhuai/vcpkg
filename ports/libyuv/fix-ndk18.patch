@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 799cabde..210ae592 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -107,6 +107,18 @@ if(NOT MSVC)
+   endif()
+ 
+   if(arch_lowercase STREQUAL "aarch64" OR arch_lowercase STREQUAL "arm64")
++    # NDK18 does not support -march=armv8-a+dotprod+i8mm
++    if(ANDROID)
++    # Enable Arm Neon kernels.
++    add_definitions(-DLIBYUV_NEON=1)
++    add_library(${ly_lib_name}_neon OBJECT
++      ${ly_src_dir}/compare_neon.cc
++      ${ly_src_dir}/rotate_neon.cc
++      ${ly_src_dir}/row_neon.cc
++      ${ly_src_dir}/scale_neon.cc)
++    target_compile_options(${ly_lib_name}_neon PRIVATE -mfpu=neon)
++    list(APPEND ly_lib_parts $<TARGET_OBJECTS:${ly_lib_name}_neon>)
++    else() # ANDROID
+     # Enable AArch64 Neon dot-product and i8mm kernels.
+     add_library(${ly_lib_name}_neon64 OBJECT
+       ${ly_src_dir}/compare_neon64.cc
+@@ -146,6 +158,7 @@ int main(void) { return 0; }
+     else()
+       add_definitions(-DLIBYUV_DISABLE_SME)
+     endif()
++    endif() # ANDROID
+   endif()
+ endif()
+ 
