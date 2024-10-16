@@ -1,0 +1,13 @@
+diff --git a/modules/videoio/src/cap_msmf.cpp b/modules/videoio/src/cap_msmf.cpp
+index 78eefc34a3..f832578bda 100644
+--- a/modules/videoio/src/cap_msmf.cpp
++++ b/modules/videoio/src/cap_msmf.cpp
+@@ -947,7 +947,7 @@ bool CvCapture_MSMF::initStream(DWORD streamID, const MediaType mt)
+ _ComPtr<IMFAttributes> CvCapture_MSMF::getDefaultSourceConfig(UINT32 num)
+ {
+     CV_Assert(num > 0);
+-    const bool OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS = utils::getConfigurationParameterBool("OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS", true);
++    const bool OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS = false;
+     _ComPtr<IMFAttributes> res;
+     if (FAILED(MFCreateAttributes(&res, num)) ||
+         FAILED(res->SetUINT32(MF_READWRITE_ENABLE_HARDWARE_TRANSFORMS, OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS)) ||
