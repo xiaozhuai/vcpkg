@@ -25,6 +25,7 @@ vcpkg_from_github(
       0020-fix-narrow-filesystem.diff
       0021-fix-qt-gen-def.patch
       9998-set-debug-log-level-to-warning.patch
+      9999-disable-videoio-msmf-hardware-transforms.patch
 )
 
 vcpkg_find_acquire_program(PKGCONFIG)
