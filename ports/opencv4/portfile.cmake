@@ -23,6 +23,7 @@ vcpkg_from_github(
       0017-fix-flatbuffers.patch
       0019-opencl-kernel.patch
       9998-set-debug-log-level-to-warning.patch
+      9999-disable-videoio-msmf-hardware-transforms.patch
 )
 
 vcpkg_find_acquire_program(PKGCONFIG)
