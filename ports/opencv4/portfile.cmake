@@ -43,6 +43,7 @@ vcpkg_from_github(
       "${PATCH1_FILE}"
       "${CUDA_13_SUPPORT_PATCH}"
       9998-set-debug-log-level-to-warning.patch
+      9999-disable-videoio-msmf-hardware-transforms.patch
 )
 
 # Disallow accidental build of vendored copies
