@@ -32,6 +32,7 @@ vcpkg_from_github(
       0023-ffmpeg8-support.patch
       "${PATCH1_FILE}"
       9998-set-debug-log-level-to-warning.patch
+      9999-disable-videoio-msmf-hardware-transforms.patch
 )
 # Disallow accidental build of vendored copies
 file(GLOB third_party "${SOURCE_PATH}/3rdparty/*")
