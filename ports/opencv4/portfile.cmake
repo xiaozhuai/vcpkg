@@ -26,6 +26,7 @@ vcpkg_from_github(
       0029-dlpack-find-package.patch
       0030-kleidicv-install-license.patch
       9998-set-debug-log-level-to-warning.patch
+      9999-disable-videoio-msmf-hardware-transforms.patch
 )
 
 # Disallow accidental build of vendored copies
