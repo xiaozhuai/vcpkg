@@ -36,6 +36,7 @@ vcpkg_from_github(
       0019-opencl-kernel.patch
       0020-miss-openexr.patch
       "${ADD_INCLUDE_CHRONO}"
+      9999-disable-videoio-msmf-hardware-transforms.patch
 )
 
 vcpkg_find_acquire_program(PKGCONFIG)
