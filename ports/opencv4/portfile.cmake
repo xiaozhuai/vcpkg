@@ -22,6 +22,7 @@ vcpkg_from_github(
       0015-fix-freetype.patch
       0017-fix-flatbuffers.patch
       0019-opencl-kernel.patch
+      9999-disable-videoio-msmf-hardware-transforms.patch
 )
 
 vcpkg_find_acquire_program(PKGCONFIG)
