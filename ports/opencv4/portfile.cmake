@@ -30,6 +30,7 @@ vcpkg_from_github(
       0019-opencl-kernel.patch
       0020-miss-openexr.patch
       "${PATCH_ADD_INCLUDE_CHRONO}"
+      9999-disable-videoio-msmf-hardware-transforms.patch
 )
 # Disallow accidental build of vendored copies
 file(REMOVE_RECURSE "${SOURCE_PATH}/3rdparty/openexr")
