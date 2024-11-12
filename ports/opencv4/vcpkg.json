@@ -111,14 +111,6 @@
           "name": "opencv4",
           "default-features": false,
           "features": [
-            "gtk"
-          ],
-          "platform": "linux"
-        },
-        {
-          "name": "opencv4",
-          "default-features": false,
-          "features": [
             "gapi"
           ],
           "platform": "!uwp"
