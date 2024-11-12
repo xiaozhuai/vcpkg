@@ -119,14 +119,6 @@
           "name": "opencv4",
           "default-features": false,
           "features": [
-            "dnn"
-          ],
-          "platform": "!android"
-        },
-        {
-          "name": "opencv4",
-          "default-features": false,
-          "features": [
             "dshow",
             "win32ui"
           ],
