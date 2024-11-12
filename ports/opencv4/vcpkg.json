@@ -41,10 +41,6 @@
       "name": "gapi",
       "platform": "!uwp"
     },
-    {
-      "name": "gtk",
-      "platform": "linux"
-    },
     "highgui",
     "intrinsics",
     "jpeg",
