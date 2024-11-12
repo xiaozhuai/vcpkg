@@ -26,10 +26,6 @@
       "platform": "windows & !uwp & !mingw"
     },
     {
-      "name": "dnn",
-      "platform": "!android"
-    },
-    {
       "name": "dshow",
       "platform": "windows & !uwp"
     },
