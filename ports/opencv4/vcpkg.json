@@ -30,7 +30,6 @@
       "name": "directml",
       "platform": "windows & !uwp & !mingw"
     },
-    "dnn",
     {
       "name": "dshow",
       "platform": "windows & !uwp"
