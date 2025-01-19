@@ -15,9 +15,6 @@
     },
     "zlib"
   ],
-  "default-features": [
-    "ssl"
-  ],
   "features": {
     "mbedtls": {
       "description": "SSL support (mbedTLS)",
