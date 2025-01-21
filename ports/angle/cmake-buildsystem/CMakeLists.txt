@@ -328,6 +328,7 @@ else ()
         LIBANGLE_IMPLEMENTATION
     )
 endif ()
+set_target_properties(ANGLE PROPERTIES OUTPUT_NAME libANGLE)
 
 if (ENABLE_WEBGL)
     set(libglesv2_entry_points_headers
