@@ -1,0 +1,20 @@
+{
+  "name": "xiaozhuai-angle",
+  "version-date": "2026-01-22",
+  "description": "A conformant OpenGL ES implementation for Windows, Mac, Linux, iOS and Android.",
+  "homepage": "https://github.com/google/angle",
+  "license": "BSD-3-Clause",
+  "supports": "windows | osx | ios",
+  "dependencies": [
+    "egl-registry",
+    "opengl-registry",
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    }
+  ]
+}
