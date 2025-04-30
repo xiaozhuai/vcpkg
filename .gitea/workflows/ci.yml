@@ -1,0 +1,34 @@
+name: ci
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.runner }}
+    name: Build for ${{ join(matrix.platforms, ', ') }}
+    strategy:
+      matrix:
+        include:
+          - runner: windows-10
+            platforms:
+              - win_x64
+              - win_x86
+          - runner: macos-15
+            platforms: 
+              - osx_x64
+              - osx_arm64
+              - android
+              - ios
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Build
+        run: |
+          zx vcpkg_install_packages.mjs ${{ join(matrix.platforms, ' ') }} --clean
