@@ -11,6 +11,7 @@ ports:
   - concurrentqueue
   - imageinfo
   - nameof
+  - uvw
   - xorstr
   - xxhash
   - wyhash
