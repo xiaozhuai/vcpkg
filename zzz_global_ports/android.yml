@@ -15,6 +15,7 @@ ports:
   - readerwriterqueue
   - imageinfo
   - nameof
+  - uvw
   - xorstr
   - xxhash
   - wyhash
