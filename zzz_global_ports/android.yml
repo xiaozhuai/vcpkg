@@ -14,6 +14,7 @@ ports:
   - nanobench
   - imageinfo
   - nameof
+  - uvw
   - xorstr
   - xxhash
   - wyhash

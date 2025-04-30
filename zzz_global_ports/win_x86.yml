@@ -13,7 +13,7 @@ ports:
   - imageinfo
   - ixwebsocket
   - nameof
-  # - uvw
+  - uvw
   - xorstr
   - xxhash
   - wyhash
