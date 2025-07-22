@@ -42,6 +42,7 @@ vcpkg_from_github(
       0026-cuda-msvc-preprocessor.patch
       "${PATCH1_FILE}"
       "${CUDA_13_SUPPORT_PATCH}"
+      9998-set-debug-log-level-to-warning.patch
 )
 
 # Disallow accidental build of vendored copies
