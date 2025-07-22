@@ -25,6 +25,7 @@ vcpkg_from_github(
       0028-ffmpeg9-support.patch
       0029-dlpack-find-package.patch
       0030-kleidicv-install-license.patch
+      9998-set-debug-log-level-to-warning.patch
 )
 
 # Disallow accidental build of vendored copies
