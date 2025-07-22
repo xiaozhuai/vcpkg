@@ -43,6 +43,7 @@ vcpkg_from_github(
       0028-ffmpeg9-support.patch
       "${PATCH1_FILE}"
       "${CUDA_13_SUPPORT_PATCH}"
+      9998-set-debug-log-level-to-warning.patch
 )
 
 # Disallow accidental build of vendored copies
