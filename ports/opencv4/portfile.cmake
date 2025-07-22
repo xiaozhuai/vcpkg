@@ -31,6 +31,7 @@ vcpkg_from_github(
       0022-android-use-vcpkg-cpu-features.patch
       0023-ffmpeg8-support.patch
       "${PATCH1_FILE}"
+      9998-set-debug-log-level-to-warning.patch
 )
 # Disallow accidental build of vendored copies
 file(GLOB third_party "${SOURCE_PATH}/3rdparty/*")
