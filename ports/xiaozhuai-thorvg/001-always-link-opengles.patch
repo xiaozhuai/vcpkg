@@ -1,0 +1,68 @@
+diff --git a/src/renderer/gl_engine/meson.build b/src/renderer/gl_engine/meson.build
+index c3c825db..2fc4e400 100644
+--- a/src/renderer/gl_engine/meson.build
++++ b/src/renderer/gl_engine/meson.build
+@@ -40,3 +40,6 @@ engine_dep += [declare_dependency(
+     include_directories : include_directories('.'),
+     sources             : source_file,
+ )]
++
++engine_dep += dependency('glesx-egl', method: 'pkg-config')
++engine_dep += dependency('glesx-glesv2', method: 'pkg-config')
+diff --git a/src/renderer/gl_engine/tvgGl.cpp b/src/renderer/gl_engine/tvgGl.cpp
+index fc427e0f..28bd63e5 100644
+--- a/src/renderer/gl_engine/tvgGl.cpp
++++ b/src/renderer/gl_engine/tvgGl.cpp
+@@ -23,6 +23,7 @@
+ #include "tvgGl.h"
+ #include "tvgCommon.h"
+ 
++#if 0
+ #ifdef __EMSCRIPTEN__
+ 
+ bool glInit()
+@@ -898,4 +899,5 @@ bool glTerm()
+     return true;
+ }
+ 
+-#endif // __EMSCRIPTEN__
+\ No newline at end of file
++#endif // __EMSCRIPTEN__
++#endif
+\ No newline at end of file
+diff --git a/src/renderer/gl_engine/tvgGl.h b/src/renderer/gl_engine/tvgGl.h
+index 46b5f2fe..ce287bc8 100644
+--- a/src/renderer/gl_engine/tvgGl.h
++++ b/src/renderer/gl_engine/tvgGl.h
+@@ -28,6 +28,16 @@
+     #include <emscripten/html5_webgl.h>
+     #define GL_CHECK(stmt) stmt
+ #else //__EMSCRIPTEN__
++    #include <EGL/egl.h>
++    #include <GLES3/gl3.h>
++    #ifdef _DEBUG
++        #define GL_CHECK(stmt) stmt; assert(glGetError() == GL_NO_ERROR);
++    #else
++        #define GL_CHECK(stmt) stmt
++    #endif
++    #define tvgEglGetCurrentContext eglGetCurrentContext
++    #define tvgEglMakeCurrent       eglMakeCurrent
++#if 0
+     #if defined (THORVG_GL_TARGET_GLES)
+         #define TVG_REQUIRE_GL_MAJOR_VER 3
+         #define TVG_REQUIRE_GL_MINOR_VER 0
+@@ -1508,10 +1518,10 @@
+         extern PFNEGLGETCURRENTCONTEXTPROC  tvgEglGetCurrentContext;
+         extern PFNEGLMAKECURRENTPROC        tvgEglMakeCurrent;
+     #endif
+-
++#endif
+ #endif // __EMSCRIPTEN__
+ 
+-bool glInit();
+-bool glTerm();
++inline bool glInit() { return true; }
++inline bool glTerm() { return true; }
+ 
+ #endif // _TVG_GL_H_
+\ No newline at end of file
