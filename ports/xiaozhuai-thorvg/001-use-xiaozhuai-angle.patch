@@ -1,0 +1,34 @@
+diff --git a/src/renderer/gl_engine/meson.build b/src/renderer/gl_engine/meson.build
+index 1bbd263a..97fd0148 100644
+--- a/src/renderer/gl_engine/meson.build
++++ b/src/renderer/gl_engine/meson.build
+@@ -23,27 +23,8 @@ source_file = [
+    'tvgGlTessellator.h',
+ ]
+ 
+-if host_machine.system() == 'darwin'
+-    gl_dep = declare_dependency(link_args: ['-framework', 'OpenGL'])
+-    compiler_flags += ['-Wno-deprecated']     #for deprecated opengl
+-else
+-    #find a opengl library with fallbacks
+-    gl_dep = dependency('GL', required: false)
+-
+-    if not gl_dep.found()
+-        gl_dep = meson.get_compiler('cpp').find_library('GL', required: false)
+-    endif
+-
+-    if not gl_dep.found()
+-        gl_dep = dependency('GLESv3', required: false)
+-        target_opengles = true
+-    endif
+-
+-    if not gl_dep.found()
+-        gl_dep = meson.get_compiler('cpp').find_library('GLESv3')
+-        target_opengles = true
+-    endif
+-endif
++gl_dep = meson.get_compiler('cpp').find_library('GLESv2')
++target_opengles = true
+ 
+ if target_opengles
+     gl_target_profile = '-DTHORVG_GL_TARGET_GLES=1'
