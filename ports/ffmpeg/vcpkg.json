@@ -28,7 +28,11 @@
     "avfilter",
     "avformat",
     "swresample",
-    "swscale"
+    "swscale",
+    {
+      "name": "nvcodec",
+      "platform": "windows & !uwp & !arm64"
+    }
   ],
   "features": {
     "all": {
