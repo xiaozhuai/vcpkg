@@ -50,7 +50,6 @@
     "png",
     "quirc",
     "thread",
-    "tiff",
     "webp",
     {
       "name": "win32ui",
