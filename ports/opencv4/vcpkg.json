@@ -42,7 +42,6 @@
     "png",
     "quirc",
     "thread",
-    "tiff",
     {
       "name": "v4l",
       "platform": "linux"
