@@ -4,6 +4,8 @@ vcpkg_from_github(
     REF "v${VERSION}"
     SHA512 af61f91929d469a11325920815bbd73696f53553272c5d0a5352c3414aacc785a21bb3fc18907eaef59d656785293e8c2b3b48ef359778edf2b6dc191f8673c7
     HEAD_REF master
+    PATCHES
+        fix_nil_conflict.patch
 )
 
 set(VCPKG_BUILD_TYPE release) # header-only port
