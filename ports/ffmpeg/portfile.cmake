@@ -733,6 +733,23 @@ if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
     set(OPTIONS "${OPTIONS} --pkg-config-flags=--static")
 endif()
 
+set(OPTIONS "${OPTIONS} --disable-encoders --disable-decoders --disable-parsers --disable-muxers --disable-demuxers --disable-bsfs --disable-filters --disable-devices --disable-protocols --enable-encoder=aac,h264,hevc,mjpeg --enable-decoder=aac,h264,hevc,mjpeg --enable-parser=aac,h264,hevc,mjpeg --enable-muxer=mov,mp4,matroska --enable-demuxer=mov,mp4,matroska --enable-bsf=aac_adtstoasc,h264_metadata,h264_mp4toannexb,h264_redundant_pps,hevc_metadata,hevc_mp4toannexb,mjpeg2jpeg,mjpega_dump_header --enable-filter=scale --enable-protocol=file")
+if(VCPKG_TARGET_IS_OSX OR VCPKG_TARGET_IS_IOS)
+    set(OPTIONS "${OPTIONS} --enable-encoder=h264_videotoolbox,hevc_videotoolbox --enable-hwaccel=h264_videotoolbox,hevc_videotoolbox")
+elseif(VCPKG_TARGET_IS_WINDOWS)
+    set(OPTIONS "${OPTIONS} --enable-encoder=h264_d3d12va,hevc_d3d12va --enable-hwaccel=h264_d3d11va,h264_d3d11va2,h264_d3d12va,h264_dxva2,hevc_d3d11va,hevc_d3d11va2,hevc_d3d12va,hevc_dxva2 --enable-filter=scale_d3d11,scale_d3d12")
+    if("nvcodec" IN_LIST FEATURES)
+        set(OPTIONS "${OPTIONS} --enable-encoder=h264_nvenc,hevc_nvenc --enable-decoder=h264_cuvid,hevc_cuvid,mjpeg_cuvid --enable-hwaccel=h264_nvdec,hevc_nvdec,mjpeg_nvdec --enable-filter=scale_cuda,scale_npp")
+    endif()
+    if("qsv" IN_LIST FEATURES)
+        set(OPTIONS "${OPTIONS} --enable-encoder=h264_qsv,hevc_qsv,mjpeg_qsv --enable-decoder=h264_qsv,hevc_qsv,mjpeg_qsv --enable-filter=scale_qsv")
+    endif()
+elseif(VCPKG_TARGET_IS_ANDROID)
+    set(OPTIONS "${OPTIONS} --enable-encoder=h264_mediacodec,hevc_mediacodec --enable-decoder=h264_mediacodec,hevc_mediacodec")
+else()
+    message(FATAL_ERROR "Unsupported platform")
+endif()
+
 message(STATUS "Building Options: ${OPTIONS}")
 
 # Release build
