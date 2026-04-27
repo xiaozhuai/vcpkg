@@ -32,6 +32,10 @@
     {
       "name": "nvcodec",
       "platform": "(x64 | x86) & (windows | linux) & !uwp"
+    },
+    {
+      "name": "qsv",
+      "platform": "(x64 | x86) & (windows | linux) & !uwp"
     }
   ],
   "features": {
