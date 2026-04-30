@@ -6065,7 +6065,7 @@
       "port-version": 0
     },
     "llfio": {
-      "baseline": "2025-01-13",
+      "baseline": "2026-04-29",
       "port-version": 0
     },
     "llgi": {
@@ -6889,7 +6889,7 @@
       "port-version": 0
     },
     "ned14-internal-quickcpplib": {
-      "baseline": "2025-12-16",
+      "baseline": "2026-04-29",
       "port-version": 0
     },
     "neko-event": {
@@ -7521,7 +7521,7 @@
       "port-version": 0
     },
     "outcome": {
-      "baseline": "2.2.14",
+      "baseline": "2.2.15",
       "port-version": 0
     },
     "p-ranav-csv": {
@@ -9597,7 +9597,7 @@
       "port-version": 0
     },
     "status-code": {
-      "baseline": "2025-05-21",
+      "baseline": "2026-04-29",
       "port-version": 0
     },
     "status-value-lite": {
