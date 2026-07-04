@@ -1,0 +1,19 @@
+diff --git a/src/renderer/gpu_engine/gl/tvgGlStateCache.cpp b/src/renderer/gpu_engine/gl/tvgGlStateCache.cpp
+index 1c26d4c9..325426a1 100644
+--- a/src/renderer/gpu_engine/gl/tvgGlStateCache.cpp
++++ b/src/renderer/gpu_engine/gl/tvgGlStateCache.cpp
+@@ -53,8 +53,12 @@ void GlStateCache::setCapability(GLenum value, bool enabled)
+ {
+     auto& state = capability(value);
+     if (state.enabled.matches(enabled)) return;
+-    if (enabled) GL_CHECK(glEnable(value));
+-    else GL_CHECK(glDisable(value));
++    if (enabled) {
++        GL_CHECK(glEnable(value));
++    }
++    else {
++        GL_CHECK(glDisable(value));
++    }
+     state.enabled.set(enabled);
+ }
+ 

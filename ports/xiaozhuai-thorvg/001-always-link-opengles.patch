@@ -1,0 +1,64 @@
+diff --git a/src/renderer/gpu_engine/gl/meson.build b/src/renderer/gpu_engine/gl/meson.build
+index 80bbe67e..0cfbca74 100644
+--- a/src/renderer/gpu_engine/gl/meson.build
++++ b/src/renderer/gpu_engine/gl/meson.build
+@@ -48,3 +48,6 @@ engine_dep += [declare_dependency(
+     include_directories : include_directories('.'),
+     sources             : source_file,
+ )]
++
++engine_dep += dependency('glesx-egl', method: 'pkg-config')
++engine_dep += dependency('glesx-glesv2', method: 'pkg-config')
+diff --git a/src/renderer/gpu_engine/gl/tvgGl.cpp b/src/renderer/gpu_engine/gl/tvgGl.cpp
+index a057e836..16dbcab5 100644
+--- a/src/renderer/gpu_engine/gl/tvgGl.cpp
++++ b/src/renderer/gpu_engine/gl/tvgGl.cpp
+@@ -23,6 +23,7 @@
+ #include "tvgGl.h"
+ #include "tvgCommon.h"
+ 
++#if 0
+ #ifdef __EMSCRIPTEN__
+ 
+ bool glInit()
+@@ -915,3 +916,4 @@ bool glTerm()
+ }
+ 
+ #endif // __EMSCRIPTEN__
++#endif
+diff --git a/src/renderer/gpu_engine/gl/tvgGl.h b/src/renderer/gpu_engine/gl/tvgGl.h
+index a83f8be6..0dde19d9 100644
+--- a/src/renderer/gpu_engine/gl/tvgGl.h
++++ b/src/renderer/gpu_engine/gl/tvgGl.h
+@@ -28,6 +28,17 @@
+     #include <emscripten/html5_webgl.h>
+     #define GL_CHECK(stmt) stmt
+ #else //__EMSCRIPTEN__
++    #include <EGL/egl.h>
++    #include <GLES3/gl3.h>
++    #ifdef _DEBUG
++        #include <cassert>
++        #define GL_CHECK(stmt) stmt; assert(glGetError() == GL_NO_ERROR);
++    #else
++        #define GL_CHECK(stmt) stmt
++    #endif
++    #define tvgEglGetCurrentContext eglGetCurrentContext
++    #define tvgEglMakeCurrent       eglMakeCurrent
++#if 0
+     #if defined (THORVG_GL_TARGET_GLES)
+         #define TVG_REQUIRE_GL_MAJOR_VER 3
+         #define TVG_REQUIRE_GL_MINOR_VER 0
+@@ -1508,10 +1519,10 @@
+         extern PFNEGLGETCURRENTCONTEXTPROC  tvgEglGetCurrentContext;
+         extern PFNEGLMAKECURRENTPROC        tvgEglMakeCurrent;
+     #endif
+-
++#endif
+ #endif // __EMSCRIPTEN__
+ 
+-bool glInit();
+-bool glTerm();
++inline bool glInit() { return true; }
++inline bool glTerm() { return true; }
+ 
+ #endif // _TVG_GL_H_
