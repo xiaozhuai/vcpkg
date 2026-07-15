@@ -32,10 +32,6 @@
       "platform": "windows & !uwp"
     },
     "fs",
-    {
-      "name": "gapi",
-      "platform": "!uwp"
-    },
     "highgui",
     "intrinsics",
     "jpeg",
