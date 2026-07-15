@@ -40,7 +40,6 @@
       "platform": "windows & !uwp & !mingw"
     },
     "png",
-    "quirc",
     "thread",
     {
       "name": "v4l",
