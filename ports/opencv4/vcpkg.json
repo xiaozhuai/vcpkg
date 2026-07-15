@@ -28,10 +28,6 @@
   "default-features": [
     "calib3d",
     {
-      "name": "directml",
-      "platform": "windows & !uwp & !mingw"
-    },
-    {
       "name": "dshow",
       "platform": "windows & !uwp"
     },
