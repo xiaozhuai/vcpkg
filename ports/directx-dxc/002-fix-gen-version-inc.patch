@@ -1,0 +1,47 @@
+diff --git a/utils/GetCommitInfo.py b/utils/GetCommitInfo.py
+index bbb4675ad..739470ae1 100644
+--- a/utils/GetCommitInfo.py
++++ b/utils/GetCommitInfo.py
+@@ -5,6 +5,7 @@ import subprocess
+ 
+ 
+ def git_get_commit_hash():
++    return "c8611f6ff"
+     try:
+         return subprocess.check_output(
+             ['git', 'rev-parse', '--short=8', 'HEAD']).decode('ascii').strip()
+@@ -13,6 +14,7 @@ def git_get_commit_hash():
+ 
+ 
+ def git_get_commit_count():
++    return 5593
+     try:
+         return subprocess.check_output(
+             ['git', 'rev-list', '--count', 'HEAD']).decode('ascii').strip()
+diff --git a/utils/version/gen_version.py b/utils/version/gen_version.py
+index a3bfcabe5..da64c68b8 100644
+--- a/utils/version/gen_version.py
++++ b/utils/version/gen_version.py
+@@ -40,6 +40,7 @@ def is_dirty():
+     return len(diff.strip()) != 0
+ 
+ def get_last_commit_sha():
++    return "c8611f6ff-dirty"
+     try:
+         sha = get_output_of(["git", "rev-parse", "--short", "HEAD"])
+         if is_dirty():
+@@ -49,12 +50,14 @@ def get_last_commit_sha():
+         return "00000000"
+ 
+ def get_current_branch():
++    return "HEAD"
+     try:
+         return get_output_of(["git", "rev-parse", "--abbrev-ref", "HEAD"])
+     except subprocess.CalledProcessError:
+         return "private"
+ 
+ def get_commit_count(sha):
++    return 5593
+     try:
+         return get_output_of(["git", "rev-list", "--count", sha])
+     except subprocess.CalledProcessError:
