@@ -7,6 +7,12 @@ vcpkg_from_github(
     HEAD_REF master
 )
 
-file(COPY "${SOURCE_PATH}/nanoprintf.h" DESTINATION "${CURRENT_PACKAGES_DIR}/include")
+vcpkg_download_distfile(NANOPRINTF_HEADER
+    URLS "https://github.com/charlesnicholson/nanoprintf/releases/download/v${VERSION}/nanoprintf.h"
+    FILENAME "nanoprintf-${VERSION}.h"
+    SHA512 8e461c4fa607feb6379b9dc2ac5c156baecb57d62ad7f4fa0bc9ba1773bc44f9c373bd1091ac19de024a6dd600fa9679028b1a8ec2536bf0c9881ac211dfaa3a
+)
+
+file(INSTALL "${NANOPRINTF_HEADER}" DESTINATION "${CURRENT_PACKAGES_DIR}/include" RENAME "nanoprintf.h")
 
 vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/LICENSE")
