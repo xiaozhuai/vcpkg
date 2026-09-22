@@ -1,0 +1,38 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c4d9732..5054ecd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -379,13 +379,16 @@ if(PHYSFS_INSTALL)
+     add_custom_target(uninstall-physfs
+         COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
+ 
+-    if(NOT MSVC)
+-        configure_file(cmake/physfs.pc.in physfs.pc @ONLY)
+-        install(
+-            FILES "${CMAKE_CURRENT_BINARY_DIR}/physfs.pc"
+-            DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
+-        )
++    if(MSVC AND PHYSFS_BUILD_STATIC)
++        set(PHYSFS_PKGCONFIG_LIBNAME "physfs-static")
++    else()
++        set(PHYSFS_PKGCONFIG_LIBNAME "physfs")
+     endif()
++    configure_file(cmake/physfs.pc.in physfs.pc @ONLY)
++    install(
++        FILES "${CMAKE_CURRENT_BINARY_DIR}/physfs.pc"
++        DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
++    )
+ 
+     if(PHYSFS_INSTALL_MAN)
+         sdl_get_git_revision_hash(PHYSFS_REVISION)
+diff --git a/cmake/physfs.pc.in b/cmake/physfs.pc.in
+index 5813d95..b4526da 100644
+--- a/cmake/physfs.pc.in
++++ b/cmake/physfs.pc.in
+@@ -8,5 +8,5 @@ Description: PhysicsFS is a library to provide abstract access to various archiv
+ URL: https://icculus.org/physfs/
+ Version: @PHYSFS_VERSION@
+ Requires.private: @PC_PRIVATE_REQUIRES@
+-Libs: -L${libdir} -lphysfs
++Libs: -L${libdir} -l@PHYSFS_PKGCONFIG_LIBNAME@
+ Cflags: -I${includedir}
