@@ -72,10 +72,6 @@
     "async-io",
     "brotli",
     "concurrent",
-    {
-      "name": "dbus",
-      "platform": "!(static & windows) & !android"
-    },
     "dnslookup",
     "doubleconversion",
     {
@@ -101,10 +97,6 @@
     "jpeg",
     "network",
     {
-      "name": "opengl",
-      "platform": "!ios"
-    },
-    {
       "name": "openssl",
       "platform": "!ios"
     },
@@ -115,9 +107,6 @@
       "platform": "ios"
     },
     "sessionmanager",
-    "sql",
-    "sql-psql",
-    "sql-sqlite",
     "testlib",
     "thread",
     "widgets",
@@ -342,18 +331,6 @@
     "gui": {
       "description": "Qt Gui",
       "dependencies": [
-        {
-          "name": "opengl",
-          "platform": "!ios"
-        },
-        {
-          "name": "qtbase",
-          "default-features": false,
-          "features": [
-            "opengl"
-          ],
-          "platform": "osx"
-        },
         {
           "name": "qtbase",
           "default-features": false,
