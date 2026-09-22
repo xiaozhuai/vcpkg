@@ -1,7 +1,24 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c4d9732..5054ecd 100644
+index c4d9732..b8c38b4 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -215,11 +215,11 @@ if(PHYSFS_BUILD_STATIC)
+     add_library(PhysFS::PhysFS-static ALIAS physfs-static)
+     sdl_add_warning_options(physfs-static WARNING_AS_ERROR ${PHYSFS_WERROR})
+     set_property(TARGET physfs-static PROPERTY EXPORT_NAME PhysFS-static)
+-    # Don't rename this on Windows, since DLLs will also produce an import
+-    #  library named "physfs.lib" which would conflict; Unix tend to like the
+-    #  same library name with a different extension for static libs, but
+-    #  Windows can just have a separate name.
+-    if(NOT MSVC)
++    # Keep a separate name when static and import libraries use the same suffix.
++    if(CMAKE_STATIC_LIBRARY_SUFFIX STREQUAL CMAKE_IMPORT_LIBRARY_SUFFIX)
++        set(PHYSFS_STATIC_OUTPUT_NAME "physfs-static")
++    else()
++        set(PHYSFS_STATIC_OUTPUT_NAME "physfs")
+         set_property(TARGET physfs-static PROPERTY OUTPUT_NAME "physfs")
+     endif()
+     if(WINRT)
 @@ -379,13 +379,16 @@ if(PHYSFS_INSTALL)
      add_custom_target(uninstall-physfs
          COMMAND ${CMAKE_COMMAND} -P "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake")
@@ -12,10 +29,10 @@ index c4d9732..5054ecd 100644
 -            FILES "${CMAKE_CURRENT_BINARY_DIR}/physfs.pc"
 -            DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
 -        )
-+    if(MSVC AND PHYSFS_BUILD_STATIC)
-+        set(PHYSFS_PKGCONFIG_LIBNAME "physfs-static")
-+    else()
++    if(PHYSFS_BUILD_SHARED)
 +        set(PHYSFS_PKGCONFIG_LIBNAME "physfs")
++    elseif(PHYSFS_BUILD_STATIC)
++        set(PHYSFS_PKGCONFIG_LIBNAME "${PHYSFS_STATIC_OUTPUT_NAME}")
      endif()
 +    configure_file(cmake/physfs.pc.in physfs.pc @ONLY)
 +    install(
