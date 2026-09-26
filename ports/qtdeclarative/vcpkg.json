@@ -18,7 +18,6 @@
       "host": true,
       "default-features": false
     },
-    "qtlanguageserver",
     {
       "name": "qtshadertools",
       "default-features": false
