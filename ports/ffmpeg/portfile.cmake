@@ -774,6 +774,24 @@ if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
     set(OPTIONS "${OPTIONS} --pkg-config-flags=--static")
 endif()
 
+string(APPEND OPTIONS
+    " --disable-everything"
+    " --disable-autodetect"
+    " --disable-programs"
+    " --disable-doc"
+    " --disable-network"
+    " --disable-avdevice"
+    " --disable-avformat"
+    " --disable-avfilter"
+    " --disable-swresample"
+    " --disable-swscale"
+    " --disable-audiotoolbox"
+    " --disable-videotoolbox"
+    " --enable-avutil"
+    " --enable-avcodec"
+    " --enable-decoder=aac,alac"
+)
+
 message(STATUS "Building Options: ${OPTIONS}")
 
 # Release build
